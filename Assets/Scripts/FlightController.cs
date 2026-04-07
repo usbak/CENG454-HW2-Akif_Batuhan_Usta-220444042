@@ -5,7 +5,7 @@ public class flightController : MonoBehaviour
     [SerializeField] private float pitchSpeed  = 45f;
     [SerializeField] private float yawSpeed    = 45f;
     [SerializeField] private float rollSpeed   = 45f;
-    [SerializeField] private float thrustSpeed = 5f;
+    [SerializeField] private float thrustSpeed = 15f;
 
     private Rigidbody planeRb;
 
@@ -13,9 +13,10 @@ public class flightController : MonoBehaviour
     {
         planeRb = GetComponent<Rigidbody>();
         planeRb.freezeRotation = true;
+        planeRb.useGravity = false; // ucak suzulsun, yere dusmesin
     }
 
-    void Update()
+    void FixedUpdate()
     {
         HandleRotation();
         HandleThrust();
@@ -30,18 +31,25 @@ public class flightController : MonoBehaviour
         if (Input.GetKey(KeyCode.Q)) rollInput = 1f;
         if (Input.GetKey(KeyCode.E)) rollInput = -1f;
 
-        float pitchAmount = verticalInput * pitchSpeed * Time.deltaTime;
-        float yawAmount   = horizontalInput * yawSpeed * Time.deltaTime;
-        float rollAmount  = rollInput * rollSpeed * Time.deltaTime;
+        float pitchAmount = verticalInput * pitchSpeed * Time.fixedDeltaTime;
+        float yawAmount   = horizontalInput * yawSpeed * Time.fixedDeltaTime;
+        float rollAmount  = rollInput * rollSpeed * Time.fixedDeltaTime;
 
-        transform.Rotate(pitchAmount, yawAmount, rollAmount, Space.Self);
+        Quaternion deltaRot = Quaternion.Euler(pitchAmount, yawAmount, rollAmount);
+        planeRb.MoveRotation(planeRb.rotation * deltaRot);
     }
 
     private void HandleThrust()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            transform.Translate(Vector3.forward * thrustSpeed * Time.deltaTime, Space.Self);
+            // velocity uzerinden hareket - collider'lara takilir
+            planeRb.linearVelocity = transform.forward * thrustSpeed;
+        }
+        else
+        {
+            // space birakinca dur
+            planeRb.linearVelocity = Vector3.zero;
         }
     }
 }
