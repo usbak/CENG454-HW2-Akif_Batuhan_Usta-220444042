@@ -152,4 +152,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flySpeed: 20
-  rotateSpeed: 50
+  rotateSpeed: 3
