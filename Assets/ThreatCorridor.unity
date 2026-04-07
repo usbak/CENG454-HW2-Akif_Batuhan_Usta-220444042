@@ -548,12 +548,32 @@ Transform:
   m_GameObject: {fileID: 456641053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 477.6, y: 5.6, z: 619.6}
+  m_LocalPosition: {x: 450.5, y: 5.6, z: 654.5}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1068080941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3022155169555145747, guid: 0969f7946945ff0448a309e63591855f, type: 3}
+  m_PrefabInstance: {fileID: 2021625364068455465}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1068080947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068080941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 171c31409a23b514f9497f73c07907c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  examManager: {fileID: 259567754}
+  missileLauncher: {fileID: 0}
+  missileDelay: 5
 --- !u!1 &1111493901
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,6 +827,7 @@ GameObject:
   - component: {fileID: 1422403768}
   - component: {fileID: 1422403767}
   - component: {fileID: 1422403766}
+  - component: {fileID: 1422403771}
   m_Layer: 0
   m_Name: TakeoffRunway
   m_TagString: TakeOffArea
@@ -925,6 +946,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
+--- !u!114 &1422403771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422403765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324a90e71f5dd3c4f80fd902ea14f2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 259567754}
 --- !u!4 &1439842484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4167280743394806330, guid: ae26a9ceb81b45046bf64901a06c1869, type: 3}
@@ -1254,6 +1288,7 @@ GameObject:
   - component: {fileID: 1967922880}
   - component: {fileID: 1967922879}
   - component: {fileID: 1967922878}
+  - component: {fileID: 1967922883}
   m_Layer: 0
   m_Name: LandingArea
   m_TagString: TakeOffArea
@@ -1280,8 +1315,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 10.039233, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0.019620514, y: 0, z: 2.761967e-11}
+  m_Size: {x: 10.039233, y: 50, z: 10}
+  m_Center: {x: 0.019620514, y: 10, z: 2.761967e-11}
 --- !u!64 &1967922879
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1372,6 +1407,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
+--- !u!114 &1967922883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967922877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27585c5d795690d4ea5c7a26e1408cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 259567754}
 --- !u!1 &2008838326 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ae26a9ceb81b45046bf64901a06c1869, type: 3}
@@ -1493,10 +1541,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4382592939830578349, guid: 0969f7946945ff0448a309e63591855f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3022155169555145747, guid: 0969f7946945ff0448a309e63591855f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1068080947}
   m_SourcePrefab: {fileID: 100100000, guid: 0969f7946945ff0448a309e63591855f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
